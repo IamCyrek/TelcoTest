@@ -6,15 +6,15 @@ import java.io.InputStream;
 import java.util.Properties;
 
 class PropertiesWorker {
-    private String sftp_host;
-    private String sftp_port;
-    private String sftp_user;
-    private String sftp_password;
-    private String sftp_remote_dir;
-    private String local_dir;
-    private String sql_user;
-    private String sql_password;
-    private String sql_database;
+    private String sftpHost;
+    private String sftpPort;
+    private String sftpUser;
+    private String sftpPassword;
+    private String sftpRemoteDir;
+    private String localDir;
+    private String sqlUser;
+    private String sqlPassword;
+    private String sqlDatabase;
 
     PropertiesWorker(String filePath) throws IOException {
         InputStream inputStream = new FileInputStream(filePath);
@@ -22,54 +22,54 @@ class PropertiesWorker {
         try {
             props.load(inputStream);
 
-            sftp_host = props.getProperty("sftp_host");
-            sftp_port = props.getProperty("sftp_port");
-            sftp_user = props.getProperty("sftp_user");
-            sftp_password = props.getProperty("sftp_password");
-            sftp_remote_dir = props.getProperty("sftp_remote_dir");
-            local_dir = props.getProperty("local_dir");
-            sql_user = props.getProperty("sql_user");
-            sql_password = props.getProperty("sql_password");
-            sql_database = props.getProperty("sql_database");
+            sftpHost = props.getProperty("sftp_host");
+            sftpPort = props.getProperty("sftp_port");
+            sftpUser = props.getProperty("sftp_user");
+            sftpPassword = props.getProperty("sftp_password");
+            sftpRemoteDir = props.getProperty("sftp_remote_dir");
+            localDir = props.getProperty("local_dir");
+            sqlUser = props.getProperty("sql_user");
+            sqlPassword = props.getProperty("sql_password");
+            sqlDatabase = props.getProperty("sql_database");
         } catch (IOException e) {
             e.printStackTrace();
             inputStream.close();
         }
     }
 
-    String getSftp_host() {
-        return sftp_host;
+    String getSftpHost() {
+        return sftpHost;
     }
 
-    String getSftp_port() {
-        return sftp_port;
+    String getSftpPort() {
+        return sftpPort;
     }
 
-    String getSftp_user() {
-        return sftp_user;
+    String getSftpUser() {
+        return sftpUser;
     }
 
-    String getSftp_password() {
-        return sftp_password;
+    String getSftpPassword() {
+        return sftpPassword;
     }
 
-    String getSftp_remote_dir() {
-        return sftp_remote_dir;
+    String getSftpRemoteDir() {
+        return sftpRemoteDir;
     }
 
-    String getLocal_dir() {
-        return local_dir;
+    String getLocalDir() {
+        return localDir;
     }
 
-    String getSql_user() {
-        return sql_user;
+    String getSqlUser() {
+        return sqlUser;
     }
 
-    String getSql_password() {
-        return sql_password;
+    String getSqlPassword() {
+        return sqlPassword;
     }
 
-    String getSql_database() {
-        return sql_database;
+    String getSqlDatabase() {
+        return sqlDatabase;
     }
 }

@@ -12,8 +12,6 @@ class PropertiesWorker {
     private String sftpPassword;
     private String sftpRemoteDir;
     private String localDir;
-    private String sqlUser;
-    private String sqlPassword;
     private String sqlDatabase;
 
     PropertiesWorker(String filePath) throws IOException {
@@ -28,8 +26,6 @@ class PropertiesWorker {
             sftpPassword = props.getProperty("sftp_password");
             sftpRemoteDir = props.getProperty("sftp_remote_dir");
             localDir = props.getProperty("local_dir");
-            sqlUser = props.getProperty("sql_user");
-            sqlPassword = props.getProperty("sql_password");
             sqlDatabase = props.getProperty("sql_database");
         } catch (IOException e) {
             e.printStackTrace();
@@ -59,14 +55,6 @@ class PropertiesWorker {
 
     String getLocalDir() {
         return localDir;
-    }
-
-    String getSqlUser() {
-        return sqlUser;
-    }
-
-    String getSqlPassword() {
-        return sqlPassword;
     }
 
     String getSqlDatabase() {

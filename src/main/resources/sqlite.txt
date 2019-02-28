@@ -1,0 +1,7 @@
+$ sqlite3 sample.db
+
+CREATE TABLE IF NOT EXISTS files (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    date_and_time DATETIME,
+    file_path_and_name VARCHAR (25)
+);

@@ -21,11 +21,21 @@ public class App {
         }
 
         try {
-            assert propertiesWorker != null;
-            FilesManager.copyFiles(propertiesWorker);
+            Class.forName("org.sqlite.JDBC");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        DBService dbService = new DBService(propertiesWorker);
+
+        try {
+            dbService.insertFileRecordObject(FilesManager.copyFiles(propertiesWorker));
         } catch (JSchException e) {
             e.printStackTrace();
         }
+
+        dbService.readFileRecordsObject().forEach(System.out::println);
+        dbService.close();
     }
 
 }

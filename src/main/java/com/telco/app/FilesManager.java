@@ -7,8 +7,10 @@ import java.util.Properties;
 import java.util.Vector;
 
 class FilesManager {
-    static void copyFiles(PropertiesWorker propertiesWorker) throws JSchException {
+
+    static Vector<FileRecordObject> copyFiles(PropertiesWorker propertiesWorker) throws JSchException {
         JSch jSch = new JSch();
+        Vector<FileRecordObject> fileRecordsObject = new Vector<>();
 
         Properties config = new Properties();
         config.put("StrictHostKeyChecking", "no");
@@ -39,6 +41,7 @@ class FilesManager {
                     if (!new File(localFileName).exists()) {
                         new File(localFileName);
                         sftpChannel.get(remoteFile.getFilename(), localFileName);
+                        fileRecordsObject.add(new FileRecordObject(System.currentTimeMillis(), localFileName));
                     }
                 }
             }
@@ -48,5 +51,6 @@ class FilesManager {
 
         sftpChannel.exit();
         session.disconnect();
+        return fileRecordsObject;
     }
 }

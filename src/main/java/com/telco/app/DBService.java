@@ -1,5 +1,6 @@
 package com.telco.app;
 
+import java.io.File;
 import java.sql.*;
 import java.util.Vector;
 
@@ -12,7 +13,9 @@ class DBService {
 
     DBService(PropertiesWorker propertiesWorker) {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:" + propertiesWorker.getSqlDatabase());
+            connection = DriverManager.getConnection("jdbc:sqlite:src" + File.separator +
+                    "main" + File.separator +
+                    "resources" + File.separator + propertiesWorker.getSqlDatabase());
 
             Statement statement = connection.createStatement();
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS " + FILES + " (" +
